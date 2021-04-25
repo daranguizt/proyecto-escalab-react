@@ -1,7 +1,7 @@
 import React from "react";
-import {useDispatch} from 'react-redux';
+import { useDispatch } from "react-redux";
 import { useForm } from "../../hooks/useForm";
-import {startLogin} from '../../actions/auth';
+import { startLogin } from "../../actions/auth";
 
 export const LoginScreen = () => {
   const dispatch = useDispatch();
@@ -13,17 +13,16 @@ export const LoginScreen = () => {
 
   const { email, password } = formValues;
   const handleSubmit = (e) => {
-      e.preventDefault();
-      dispatch(startLogin(email, password));
+    e.preventDefault();
+    dispatch(startLogin(email, password));
   };
 
   return (
-    <div>
-      <h1>This is the Login Screen</h1>
-      <hr />
-
-      <form onSubmit={handleSubmit}>
+    <div className="auth__screen">
+      <form onSubmit={handleSubmit} className="auth__box">
+        <h2>Login</h2>
         <input
+          className="auth__input"
           onChange={handleInputChange}
           type="text"
           name="email"
@@ -31,15 +30,18 @@ export const LoginScreen = () => {
           placeholder="Email"
         />
         <input
+          className="auth__input"
           onChange={handleInputChange}
           type="password"
           name="password"
           value={password}
           placeholder="Password"
         />
-        <button type="submit">
-            Login
+        <button type="submit" className="btn btn-primary">
+          Login
         </button>
+
+        <button>Google Login</button>
       </form>
     </div>
   );

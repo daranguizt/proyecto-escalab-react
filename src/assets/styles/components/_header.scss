@@ -1,0 +1,29 @@
+.header__navbar {
+  background-color: $primary;
+  color: $secondary;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 75px;
+  padding-right: 75px;
+  height: 100px;
+}
+
+.header__navbar-logo{
+    margin-left: 50px;
+}
+
+.header__navbar-list {
+  display: flex;
+  height: 75px;
+  justify-content: center;
+  list-style-type: none;
+  align-items: center;
+
+  .header__navbar-list-item{
+      text-decoration: none;
+      outline: 0;
+      margin-right: 50px;
+      font-size: 20px;
+  }
+}

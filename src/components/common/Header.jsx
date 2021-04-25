@@ -2,9 +2,13 @@ import React from 'react'
 
 export const Header = () => {
     return (
-        <div>
-            <h1>This is the Header</h1>
-            <hr />
-        </div>
+        <nav className="header__navbar">
+            <div className="header__navbar-logo">Logo</div>
+            <ul className="header__navbar-list">
+                
+                <li className="header__navbar-list-item">Login</li>
+                <li className="header__navbar-list-item">Sign Up</li>
+            </ul>
+        </nav>
     )
 }
