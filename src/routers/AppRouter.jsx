@@ -1,27 +1,52 @@
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Switch } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
+import {firebase} from '../firebase/firebaseConfig';
 import { PublicRoute } from "./PublicRoute";
 import { PrivateRoute } from "./PrivateRoute";
 import { MainScreen } from "../components/main/MainScreen";
 import { AuthRouter } from "./AuthRouter";
 import {Header} from '../components/common/Header';
+import { authLogin, startLogin } from "../actions/auth";
 
 export const AppRouter = () => {
+  const [checking, setChecking] = useState(true);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    firebase.auth().onAuthStateChanged((user) => {
+      if (user?.uid) {
+        dispatch(authLogin(user));
+        setIsLoggedIn(true);
+       
+      } else {
+        setIsLoggedIn(false);
+      }
+
+      setChecking(false);
+    });
+  }, [dispatch, setChecking]);
+
+  if (checking) {
+    return <h1>Please wait...</h1>;
+  }
+
   return (
     <Router>
       <Header />
       <Switch>
         <PublicRoute
           path="/auth"
-          isLoggedIn={false}
+          isLoggedIn={isLoggedIn}
           component={AuthRouter}
           restricted={true}
         />
 
-        <PrivateRoute
+        <PublicRoute
           path="/"
-          isLoggedIn={false}
+          isLoggedIn={isLoggedIn}
           component={MainScreen}
-          restricted={true}
+          restricted={false}
         />
       </Switch>
     </Router>

@@ -7,7 +7,7 @@ export const LoginScreen = () => {
   const dispatch = useDispatch();
   const initialState = {
     email: "eli@hehe.net",
-    password: "elipipi",
+    password: "elieli",
   };
   const [formValues, handleInputChange] = useForm(initialState);
 
@@ -18,7 +18,7 @@ export const LoginScreen = () => {
   };
 
   return (
-    <div className="auth__screen">
+    <div className="auth__screen ">
       <form onSubmit={handleSubmit} className="auth__box">
         <h2>Login</h2>
         <input
@@ -37,7 +37,7 @@ export const LoginScreen = () => {
           value={password}
           placeholder="Password"
         />
-        <button type="submit" className="btn btn-primary">
+        <button type="submit" className="btn btn-primary" id="loginButton">
           Login
         </button>
 

@@ -28,7 +28,7 @@
     }
 
     input, button{
-        margin-bottom: 30px;
+        margin-bottom: 20px;
     }
 
 }
@@ -48,7 +48,7 @@
     text-indent: 10px;
     
 
-    transition: border-bottom .3s ease;
+    transition: border-bottom .5s ease;
 
     &:focus{
         border-bottom: 1px solid $primary;

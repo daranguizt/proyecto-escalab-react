@@ -9,8 +9,8 @@
   height: 100px;
 }
 
-.header__navbar-logo{
-    margin-left: 50px;
+.header__navbar-logo {
+  margin-left: 50px;
 }
 
 .header__navbar-list {
@@ -20,10 +20,53 @@
   list-style-type: none;
   align-items: center;
 
-  .header__navbar-list-item{
-      text-decoration: none;
-      outline: 0;
-      margin-right: 50px;
+  .header__navbar-list-item {
+    text-decoration: none;
+    outline: 0;
+    margin-right: 50px;
+    font-size: 20px;
+
+    button {
       font-size: 20px;
+      width: 100px;
+      height: 40px;
+    }
   }
+}
+
+.header__user-nav {
+  display: flex;
+  align-items: center;
+}
+
+.header__user-avatar {
+  width: 75px;
+  height: 75px;
+  margin-left: 25px;
+  cursor: pointer;
+}
+
+.header__user-menu {
+  position: absolute;
+  list-style: none;
+  display: inline-block;
+  margin: 0;
+  padding: 0;
+  right: 75px-12.5px;
+  color: $secondary;
+
+  li {
+    background-color: $primary;
+    border-radius: 15px;
+    margin-top: 10px;
+    width: 100px;
+    height: 30px;
+    text-align: center;
+    cursor: pointer;
+  }
+}
+
+.active {
+  background-color: darken($color: $primary, $amount: 10) !important;
+  border-radius: 10px;
 }
