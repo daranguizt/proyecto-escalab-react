@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
-import { authLogout, startLogout } from "../../actions/auth";
+import { startLogout } from "../../actions/auth";
 import avatar from "../../assets/img/avatar.svg";
 
 export const Header = () => {

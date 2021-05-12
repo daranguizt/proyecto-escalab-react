@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useForm } from "../../hooks/useForm";
 import { startRegister } from "../../actions/auth";
 
 export const RegisterScreen = () => {
   const dispatch = useDispatch();
+
+  const [disableButton, setDisableButton] = useState(false);
   const initialState = {
     name: "",
     email: "",
@@ -14,13 +16,19 @@ export const RegisterScreen = () => {
   const [formValues, handleInputChange] = useForm(initialState);
 
   const { name, email, password, confirmPassword } = formValues;
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(startRegister({ name, email, password }));
+    setDisableButton(true);
+    dispatch(startRegister({ name, email, password })).then(
+      (isRegisterSuccessful) => {
+        setDisableButton(isRegisterSuccessful);
+      }
+    );
   };
 
   return (
-    <div className="auth__screen">
+    <div className="auth__screen animate__animated animate__fadeIn">
       <form onSubmit={handleSubmit} className="auth__box">
         <h2>Sign Up with Us!</h2>
         <input
@@ -55,7 +63,13 @@ export const RegisterScreen = () => {
           placeholder="Confirm Password"
           className="auth__input"
         />
-        <button type="submit" className="btn btn-primary">Register</button>
+        <button
+          disabled={disableButton}
+          type="submit"
+          className="btn btn-primary"
+        >
+          Register
+        </button>
       </form>
     </div>
   );

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useForm } from "../../hooks/useForm";
 import { startLogin } from "../../actions/auth";
@@ -9,16 +9,20 @@ export const LoginScreen = () => {
     email: "eli@hehe.net",
     password: "elieli",
   };
+  const [disableButton, setDisableButton] = useState(false);
   const [formValues, handleInputChange] = useForm(initialState);
 
   const { email, password } = formValues;
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    dispatch(startLogin(email, password));
+    setDisableButton(true);
+    dispatch(startLogin(email, password)).then((isLoginSuccessful) => {
+      setDisableButton(isLoginSuccessful);
+    });
   };
 
   return (
-    <div className="auth__screen ">
+    <div className="auth__screen animate__animated animate__fadeIn">
       <form onSubmit={handleSubmit} className="auth__box">
         <h2>Login</h2>
         <input
@@ -37,7 +41,11 @@ export const LoginScreen = () => {
           value={password}
           placeholder="Password"
         />
-        <button type="submit" className="btn btn-primary" id="loginButton">
+        <button
+          disabled={disableButton}
+          type="submit"
+          className="btn btn-primary auth__login-button"
+        >
           Login
         </button>
 

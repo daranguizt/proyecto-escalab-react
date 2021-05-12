@@ -1,3 +1,4 @@
+
 .header__navbar {
   background-color: $primary;
   color: $secondary;
@@ -39,21 +40,26 @@
   align-items: center;
 }
 
+$header-user-avatar-ml: 25px;
 .header__user-avatar {
   width: 75px;
   height: 75px;
-  margin-left: 25px;
+  margin-left: $header-user-avatar-ml;
   cursor: pointer;
 }
 
+$user-menu-padding: 10px;
 .header__user-menu {
   position: absolute;
   list-style: none;
   display: inline-block;
-  margin: 0;
-  padding: 0;
-  right: 75px-12.5px;
+  margin-top: 10px;
+  padding: $user-menu-padding;
+  padding-bottom: 15px;
+  border-radius: 5px;
+  right: 75px-$user-menu-padding/2 - $header-user-avatar-ml/2;
   color: $secondary;
+  background-color: darken($color: $primary, $amount: 10);
 
   li {
     background-color: $primary;
@@ -61,8 +67,12 @@
     margin-top: 10px;
     width: 100px;
     height: 30px;
-    text-align: center;
+    padding: 0;
     cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 3px;
   }
 }
 

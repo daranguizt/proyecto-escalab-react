@@ -2,14 +2,16 @@ import { firebase } from "../firebase/firebaseConfig";
 import { types } from "../types/types";
 import Swal from "sweetalert2";
 
-export const startLogin = (email, password) => {
+export const startLogin = (email, password, setDisableButton = () => {}) => {
   return async (dispatch) => {
     try {
       const {user} = await firebase
         .auth()
         .signInWithEmailAndPassword(email, password);
+       
 
       dispatch(authLogin(user));
+      return true;
       
     } catch (err) {
       Swal.fire({
@@ -17,6 +19,7 @@ export const startLogin = (email, password) => {
         title: "Error",
         text: err.message,
       });
+      return false;
     }
   };
 };
@@ -28,13 +31,15 @@ export const startRegister = ({ name, email, password }) => {
         .auth()
         .createUserWithEmailAndPassword(email, password);
       await user.updateProfile({ displayName: name });
-      console.log(user);
+      dispatch(authLogin(user));
+      return true;
     } catch (err) {
       Swal.fire({
         icon: "error",
         title: "Error",
         text: err.message,
       });
+      return false;
     }
   };
 };
