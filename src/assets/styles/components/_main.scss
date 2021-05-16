@@ -18,7 +18,8 @@
 }
 
 .main__recomendations {
-  margin-right: 25px;
+  margin-right: 30px;
+  margin-left: 30px;
 }
 
 .main__new {
@@ -33,4 +34,24 @@
   flex-direction: row;
   flex-wrap: wrap;
   margin-bottom: 25px;
+}
+
+.main__manga-card{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 30px;
+  width: 200px;
+  height: 230px;
+}
+
+.main__manga-card-image{
+
+}
+
+.main__manga-card-footer{
+  h3{
+    text-align: center;
+    color: $dark-grey;
+  }
 }

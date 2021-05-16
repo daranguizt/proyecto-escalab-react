@@ -61,10 +61,12 @@ $user-menu-padding: 10px;
   color: $secondary;
   background-color: darken($color: $primary, $amount: 10);
 
-  li {
+  a, li {
+    text-decoration: none;
+    color: $secondary;
     background-color: $primary;
     border-radius: 15px;
-    margin-top: 10px;
+    margin-top: 15px;
     width: 100px;
     height: 30px;
     padding: 0;

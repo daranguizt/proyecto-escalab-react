@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { startLogout } from "../../actions/auth";
 import avatar from "../../assets/img/avatar.svg";
 
@@ -19,9 +19,11 @@ export const Header = () => {
   };
 
   return (
-    <div>
+    <>
       <nav className="header__navbar ">
-        <div className="header__navbar-logo">Logo</div>
+        <div className="header__navbar-logo">
+          <Link to="/">Logo</Link>
+        </div>
         {!user?.uid ? (
           <ul className="header__navbar-list animate__animated animate__fadeIn">
             <NavLink
@@ -53,11 +55,10 @@ export const Header = () => {
       </nav>
       {displayMenu && (
         <ul className="header__user-menu animate__animated animate__fadeInDown animate__faster">
-          <li>Profile</li>
-          <li>Settings</li>
+          <Link to="/user-profile">Profile</Link>
           <li onClick={handleLogout}>Logout</li>
         </ul>
       )}
-    </div>
+    </>
   );
 };

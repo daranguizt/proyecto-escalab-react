@@ -5,10 +5,12 @@ import { firebase } from "../firebase/firebaseConfig";
 import { PublicRoute } from "./PublicRoute";
 import { PrivateRoute } from "./PrivateRoute";
 import { MainScreen } from "../components/main/MainScreen";
-import { AuthRouter } from "./AuthRouter";
+import { AuthRoutes } from "./AuthRoutes";
 import { Header } from "../components/common/Header";
 import { authLogin, startLogin } from "../actions/auth";
 import { waiter } from "../helpers/loginWait";
+import { MainRoutes } from "./MainRoutes";
+import { UserProfileScreen } from "../components/profile/UserProfileScreen";
 
 export const AppRouter = () => {
   const [checking, setChecking] = useState(true);
@@ -39,14 +41,16 @@ export const AppRouter = () => {
         <PublicRoute
           path="/auth"
           isLoggedIn={isLoggedIn}
-          component={AuthRouter}
+          component={AuthRoutes}
           restricted={true}
         />
+        
+        <PrivateRoute isLoggedIn={isLoggedIn} exact path="/user-profile" component={UserProfileScreen}/>
 
         <PublicRoute
           path="/"
           isLoggedIn={isLoggedIn}
-          component={MainScreen}
+          component={MainRoutes}
           restricted={false}
         />
       </Switch>
