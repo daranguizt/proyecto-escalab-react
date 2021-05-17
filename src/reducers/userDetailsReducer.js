@@ -16,6 +16,13 @@ export const userDetailsReducer = (state = initialState, action) => {
         ...state,
         favorites: action.payload,
       };
+    case types.userDeleteFavorite:
+      return {
+        ...state,
+        favorites: state.favorites.filter(
+          (item) => item.id !== action.payload.id
+        ),
+      };
     default:
       return state;
   }

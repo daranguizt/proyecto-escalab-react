@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link, NavLink } from "react-router-dom";
 import { startLogout } from "../../actions/auth";
 import avatar from "../../assets/img/avatar.svg";
-import logo from '../../assets/img/logo2.png';
+import logo from '../../assets/img/logo-resized.png';
 
 export const Header = () => {
   const dispatch = useDispatch();

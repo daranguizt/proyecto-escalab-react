@@ -10,7 +10,8 @@ export const types = {
     mangaSearch: '[Manga] Search',
 
     userSetFavorite: '[User] Set Favorite',
-    userLoadFavorites: '[Manga] Load Favorites',
+    userDeleteFavorite: '[User] Delete Favorite',
+    userLoadFavorites: '[User] Load Favorites',
 
 
 }

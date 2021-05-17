@@ -10,6 +10,16 @@
     }
 }
 
+.manga-details__details-info-title{
+    display: flex;
+    justify-content: space-between;
+}
+
+.manga-details__details-info-favorite{
+    margin-top:5px;
+    cursor: pointer;
+}
+
 .manga-details__details-info-text{
     margin-left: 20px;
 }
