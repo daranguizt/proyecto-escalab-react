@@ -5,10 +5,12 @@ export const types = {
 
     mangaLoadNew: '[Manga] Load New',
     mangaLoadHot: '[Manga] Load Hot',
-    mangaLoadFavorites: '[Manga] Load Favorites',
+    mangaSetCurrent: '[Manga] Set Current',
+    mangaCleanCurrent: '[Manga] Clean Current',
     mangaSearch: '[Manga] Search',
 
     userSetFavorite: '[User] Set Favorite',
+    userLoadFavorites: '[Manga] Load Favorites',
 
 
 }

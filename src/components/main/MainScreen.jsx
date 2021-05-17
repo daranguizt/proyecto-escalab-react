@@ -1,26 +1,27 @@
 import React, { useEffect } from "react";
-import { useDispatch } from "react-redux";
-import { startFetchingNewManga } from "../../actions/manga";
-import { WhatsNew } from "./WhatsNew";
+import { useDispatch, useSelector } from "react-redux";
+import { startFetchingHotManga, startFetchingNewManga } from "../../actions/manga";
+import { MangaSlider } from "./MangaSlider";
+import { Sidebar } from "./Sidebar";
 
 export const MainScreen = () => {
+  const dispatch = useDispatch();
+  const {newManga, hotManga} = useSelector(state => state.manga);
+  useEffect(() => {
+    dispatch(startFetchingNewManga());
+    dispatch(startFetchingHotManga());
+  }, [dispatch]);
   return (
     <div className="main__screen">
-      <ul className="main__categories">
-        <li>Action</li>
-        <li>Romance</li>
-        <li>Harem</li>
-        <li>Isekai</li>
-        <li>Comedy</li>
-      </ul>
+      <Sidebar />
 
       <div className="main__recomendations">
         <h3>What's New</h3>
         <hr />
-        <WhatsNew />
+        <MangaSlider mangas={newManga} sectionName="newManga"/>
         <h3>Hot</h3>
         <hr />
-        <div className="main__hot"></div>
+        <MangaSlider mangas={hotManga} sectionName="hotManga"/>
       </div>
     </div>
   );

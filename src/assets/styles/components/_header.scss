@@ -8,10 +8,13 @@
   padding-left: 75px;
   padding-right: 75px;
   height: 100px;
+
+  
 }
 
 .header__navbar-logo {
-  margin-left: 50px;
+  width: auto;
+  height: 90%;
 }
 
 .header__navbar-list {
@@ -53,6 +56,7 @@ $user-menu-padding: 10px;
   position: absolute;
   list-style: none;
   display: inline-block;
+  z-index: 99;
   margin-top: 10px;
   padding: $user-menu-padding;
   padding-bottom: 15px;

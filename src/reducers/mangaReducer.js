@@ -4,18 +4,21 @@ const initialState = {
   newManga: [],
   hotManga: [],
   search: [],
+  current: {},
 };
 
 export const mangaReducer = (state = initialState, action) => {
   switch (action.type) {
     case types.mangaLoadHot:
-      break;
+      return { ...state, hotManga: action.payload };
     case types.mangaLoadNew:
       return { ...state, newManga: action.payload };
-    case types.mangaLoadFavorites:
-      break;
     case types.mangaSearch:
-      break;
+      return { ...state, search: action.payload };
+    case types.mangaSetCurrent:
+      return { ...state, current: { ...action.payload } };
+    case types.mangaCleanCurrent:
+      return {...state, current: {}};
     default:
       return state;
   }

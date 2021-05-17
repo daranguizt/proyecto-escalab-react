@@ -1,10 +1,13 @@
-import React from 'react'
+import React from "react";
 
 export const Sidebar = () => {
-    return (
-        <div>
-            <h1>This is the Sidebar</h1>
-            <hr />
-        </div>
-    )
-}
+  return (
+    <ul className="main__categories">
+      <li>Action</li>
+      <li>Romance</li>
+      <li>Harem</li>
+      <li>Isekai</li>
+      <li>Comedy</li>
+    </ul>
+  );
+};

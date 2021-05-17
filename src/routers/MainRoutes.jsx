@@ -1,9 +1,8 @@
 import React from 'react';
-import { Redirect, Route, Switch } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import { MainScreen } from '../components/main/MainScreen';
 import { DetailsScreen } from '../components/manga-details/DetailsScreen';
 import { NotFoundScreen } from '../components/not-found/NotFoundScreen';
-import { UserProfileScreen } from '../components/profile/UserProfileScreen';
 
 export const MainRoutes = () => {
     return (

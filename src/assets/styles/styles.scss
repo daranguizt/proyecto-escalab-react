@@ -12,6 +12,9 @@
 @import './components/user';
 @import './components/header';
 
+.light-grey-text{
+    color: $light-grey;
+}
 
 a{
     text-decoration: none;

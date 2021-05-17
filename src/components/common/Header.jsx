@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link, NavLink } from "react-router-dom";
 import { startLogout } from "../../actions/auth";
 import avatar from "../../assets/img/avatar.svg";
+import logo from '../../assets/img/logo2.png';
 
 export const Header = () => {
   const dispatch = useDispatch();
@@ -21,9 +22,8 @@ export const Header = () => {
   return (
     <>
       <nav className="header__navbar ">
-        <div className="header__navbar-logo">
-          <Link to="/">Logo</Link>
-        </div>
+        <Link to="/" style={{height: "100%"}}><img src={logo} alt="logo" className="header__navbar-logo"/></Link>
+        
         {!user?.uid ? (
           <ul className="header__navbar-list animate__animated animate__fadeIn">
             <NavLink

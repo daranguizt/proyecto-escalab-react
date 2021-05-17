@@ -3,12 +3,10 @@ import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { firebase } from "../firebase/firebaseConfig";
 import { PublicRoute } from "./PublicRoute";
-import { PrivateRoute } from "./PrivateRoute";
-import { MainScreen } from "../components/main/MainScreen";
+import { PrivateRoute } from "./PrivateRoute"
 import { AuthRoutes } from "./AuthRoutes";
 import { Header } from "../components/common/Header";
-import { authLogin, startLogin } from "../actions/auth";
-import { waiter } from "../helpers/loginWait";
+import { authLogin } from "../actions/auth";
 import { MainRoutes } from "./MainRoutes";
 import { UserProfileScreen } from "../components/profile/UserProfileScreen";
 
