@@ -1,9 +1,10 @@
 import React from "react";
+import Carousel from "react-elastic-carousel";
 import { MangaCard } from "./MangaCard";
 
 export const MangaSlider = ({ mangas, sectionName }) => {
   return (
-    <div className="main__new">
+    <Carousel className="main__carrousel" itemsToShow={3}>
       {mangas.map((manga) => (
         <MangaCard
           key={manga.id}
@@ -13,6 +14,6 @@ export const MangaSlider = ({ mangas, sectionName }) => {
           sectionName={sectionName}
         />
       ))}
-    </div>
+    </Carousel>
   );
 };
