@@ -5,8 +5,6 @@ import { faStar as farStar } from "@fortawesome/free-regular-svg-icons";
 import { useDispatch, useSelector } from "react-redux";
 import { isFavorite } from "../../helpers/functions";
 import {
-  startDeletingFavorite,
-  startSettingFavorite,
   setFavorite,
   deleteFavorite
 } from "../../actions/user-details";
