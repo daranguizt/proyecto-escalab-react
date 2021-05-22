@@ -6,8 +6,8 @@ import { startLogin } from "../../actions/auth";
 export const LoginScreen = () => {
   const dispatch = useDispatch();
   const initialState = {
-    email: "eli@hehe.net",
-    password: "elieli",
+    email: "",
+    password: "",
   };
   const [disableButton, setDisableButton] = useState(false);
   const [formValues, handleInputChange] = useForm(initialState);
@@ -32,6 +32,7 @@ export const LoginScreen = () => {
           name="email"
           value={email}
           placeholder="Email"
+          autoComplete="off"
         />
         <input
           className="auth__input"
@@ -40,6 +41,7 @@ export const LoginScreen = () => {
           name="password"
           value={password}
           placeholder="Password"
+          autoComplete="off"
         />
         <button
           disabled={disableButton}
