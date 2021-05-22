@@ -2,7 +2,7 @@ import React from "react";
 import Carousel from "react-elastic-carousel";
 import { MangaCard } from "./MangaCard";
 
-export const MangaSlider = ({ mangas, sectionName }) => {
+export const MangaSlider = ({ mangas }) => {
   return (
     <Carousel className="main__carrousel" itemsToShow={3}>
       {mangas.map((manga) => (
@@ -11,7 +11,7 @@ export const MangaSlider = ({ mangas, sectionName }) => {
           id={manga.id}
           title={manga.title.romaji}
           coverImage={manga.coverImage.medium}
-          sectionName={sectionName}
+          listToSearch={mangas}
         />
       ))}
     </Carousel>

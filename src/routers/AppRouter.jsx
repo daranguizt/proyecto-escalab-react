@@ -9,6 +9,7 @@ import { Header } from "../components/common/Header";
 import { authLogin } from "../actions/auth";
 import { MainRoutes } from "./MainRoutes";
 import { UserProfileScreen } from "../components/profile/UserProfileScreen";
+import { startLoadingFavorites } from "../actions/user-details";
 
 export const AppRouter = () => {
   const [checking, setChecking] = useState(true);
@@ -18,7 +19,9 @@ export const AppRouter = () => {
   useEffect(() => {
     firebase.auth().onAuthStateChanged((user) => {
       if (user?.uid) {
+        console.log(user);
         dispatch(authLogin(user));
+        dispatch(startLoadingFavorites(user.uid));
         setIsLoggedIn(true);
       } else {
         setIsLoggedIn(false);

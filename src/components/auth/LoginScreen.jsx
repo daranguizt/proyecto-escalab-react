@@ -48,8 +48,6 @@ export const LoginScreen = () => {
         >
           Login
         </button>
-
-        <button>Google Login</button>
       </form>
     </div>
   );

@@ -1,23 +1,38 @@
 import React from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { startUploadingAvatar } from "../../actions/user-details";
 import logo from "../../assets/img/avatar.svg";
 import { MangaCard } from "../main/MangaCard";
 
 export const UserProfileScreen = () => {
+  const dispatch = useDispatch();
   const {
     auth: { user },
     userDetails: { favorites },
   } = useSelector((state) => state);
+
+  const handlePictureClick = () => {
+    document.querySelector("#fileSelector").click();
+  };
+
+  const handleFileChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      dispatch(startUploadingAvatar(file));
+    }
+  };
+
   return (
     <div className="user-profile__container">
       <div className="user-profile__user-info">
         <img
-          src={logo}
+          onClick={handlePictureClick}
+          src={user?.photoURL || logo}
           alt="user-avatar"
           className="user-profile__user-avatar"
         />
         <div className="user-profile__user-data">
-          <h2>{user.displayName}</h2>
+          <h2>{user?.displayName}</h2>
           <hr />
         </div>
       </div>
@@ -32,11 +47,19 @@ export const UserProfileScreen = () => {
               id={favorite.id}
               coverImage={favorite.coverImage.medium}
               title={favorite.title.romaji}
-              sectionName="newManga"
+              listToSearch={favorites}
             />
           ))}
         </div>
       </div>
+
+      <input
+        id="fileSelector"
+        type="file"
+        name="file"
+        style={{ display: "none" }}
+        onChange={handleFileChange}
+      />
     </div>
   );
 };

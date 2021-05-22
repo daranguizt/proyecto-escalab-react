@@ -55,10 +55,16 @@ export const authLogin = (user) => ({
   type: types.authLogin,
   payload: {
     uid: user.uid,
-    displayName: user.displayName
+    displayName: user.displayName,
+    photoURL: user.photoURL
   },
 });
 
 export const authLogout = () => ({
   type: types.authLogout,
+});
+
+export const authUpdatePhotoURL = (photoURL) => ({
+  type: types.authUpdatePhotoURL,
+  payload: photoURL,
 });

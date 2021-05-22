@@ -5,6 +5,7 @@ const initialState = {
   hotManga: [],
   search: [],
   current: {},
+  categories: [],
 };
 
 export const mangaReducer = (state = initialState, action) => {
@@ -18,7 +19,12 @@ export const mangaReducer = (state = initialState, action) => {
     case types.mangaSetCurrent:
       return { ...state, current: { ...action.payload } };
     case types.mangaCleanCurrent:
-      return {...state, current: {}};
+      return { ...state, current: {} };
+    case types.mangaLoadCategories:
+      return {
+        ...state,
+        categories: action.payload,
+      };
     default:
       return state;
   }

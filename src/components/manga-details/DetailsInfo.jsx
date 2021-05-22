@@ -5,8 +5,8 @@ import { faStar as farStar } from "@fortawesome/free-regular-svg-icons";
 import { useDispatch, useSelector } from "react-redux";
 import { isFavorite } from "../../helpers/functions";
 import {
-  setFavorite,
-  deleteFavorite
+  startDeletingFavorite,
+  startSettingFavorite
 } from "../../actions/user-details";
 
 export const DetailsInfo = ({ title, coverImage, ...otherProps }) => {
@@ -25,7 +25,7 @@ export const DetailsInfo = ({ title, coverImage, ...otherProps }) => {
     popularity,
   } = otherProps;
 
-  const isFav = isFavorite({ id }, favorites);
+  const favorite = isFavorite({ id }, favorites);
   const htmlDecode = (input) => {
     var e = document.createElement("div");
     e.innerHTML = input;
@@ -33,9 +33,9 @@ export const DetailsInfo = ({ title, coverImage, ...otherProps }) => {
   };
 
   const handleFavorite = () => {
-    !isFav
-      ? dispatch(setFavorite({ title, coverImage, ...otherProps }))
-      : dispatch(deleteFavorite({ title, coverImage, ...otherProps }));
+    !favorite
+      ? dispatch(startSettingFavorite({ title, coverImage, ...otherProps }))
+      : dispatch(startDeletingFavorite(favorite));
   };
 
   return (
@@ -48,7 +48,7 @@ export const DetailsInfo = ({ title, coverImage, ...otherProps }) => {
             onClick={handleFavorite}
             className="manga-details__details-info-favorite"
           >
-            <FontAwesomeIcon icon={isFav ? fasStar : farStar} />
+            <FontAwesomeIcon icon={favorite ? fasStar : farStar} />
             &nbsp;
             <span className="dark-grey-text ">Mark as favorite!</span>
           </div>}

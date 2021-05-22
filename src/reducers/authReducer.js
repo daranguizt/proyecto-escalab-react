@@ -16,6 +16,14 @@ export const authReducer = (state = initialState, action) => {
         ...state,
         user: null,
       };
+    case types.authUpdatePhotoURL:
+      return {
+        ...state,
+        user: {
+          ...state.user,
+          photoURL: action.payload,
+        },
+      };
     default:
       return state;
   }
