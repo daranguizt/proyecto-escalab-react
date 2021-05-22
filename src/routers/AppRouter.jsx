@@ -19,7 +19,6 @@ export const AppRouter = () => {
   useEffect(() => {
     firebase.auth().onAuthStateChanged((user) => {
       if (user?.uid) {
-        console.log(user);
         dispatch(authLogin(user));
         dispatch(startLoadingFavorites(user.uid));
         setIsLoggedIn(true);

@@ -13,7 +13,6 @@ export const Header = () => {
 
   const handleDisplayMenu = () => {
     setdisplayMenu(!displayMenu);
-    console.log(history);
   };
 
   const handleLogout = () => {
